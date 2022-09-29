@@ -21,6 +21,19 @@ npm install
 npm run dev
 ```
 
+## Deploy
+
+- Agregar las siguientes variables de entorno 
+```bash
+API_BASE_EASYBROKER = "https://api.easybroker.com/v1/"
+API_KEY = "API_KEY_DE_EASYBROKER"
+```
+
+- Ejecutar los siguientes comandos
+```bash
+npm install && npm run start
+```
+
 ## Documentación
 
 Puede guiarse de la documentación de la [API de EasyBoker](https://api.easybroker.com/playground) y realizar pruebas con su respectiva API KEY.
