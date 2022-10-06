@@ -14,7 +14,7 @@ propertiesRouter.get("/", async (req, res) => {
   const reqUrl = req.url.substring(1);
 
   try {
-    const data = await PropertyService(
+    const data = await PropertyService.getProperties(
       `${API_BASE_EASYBROKER}${BASE_ROUTE}${reqUrl}`
     );
 
