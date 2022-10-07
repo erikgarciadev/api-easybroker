@@ -2,7 +2,6 @@ import { Router } from "express";
 import { API_BASE_EASYBROKER } from "../../config/constants.js";
 import PropertyService from "../../services/propertyService.js";
 import { getParseData } from "../../utils/getParseData.js";
-import { serializeObject } from "../../utils/serializeObject.js";
 
 const propertiesRouter = Router();
 
@@ -29,17 +28,9 @@ propertiesRouter.get("/", async (req, res) => {
 });
 
 propertiesRouter.get("/all", async (req, res) => {
-  const API_BASE = req.protocol + "://" + req.headers.host + "/";
-
-  const reqUrl = req.url.substring(1);
-
   let results = [];
 
-  let url = `${API_BASE_EASYBROKER}${BASE_ROUTE}?${serializeObject({
-    search: {
-      operation_type: "sale",
-    },
-  })}`;
+  let url = `${API_BASE_EASYBROKER}${BASE_ROUTE}`;
 
   try {
     const responses = [];
@@ -47,13 +38,15 @@ propertiesRouter.get("/all", async (req, res) => {
     const pages = Math.ceil(data.pagination.total / data.pagination.limit);
     results = [...results, ...data.content];
     for (let i = 2; i <= pages; i++) {
-      responses.push(PropertyService.getProperties(`${url}&page=${i}`));
+      responses.push(PropertyService.getProperties(`${url}?page=${i}`));
     }
 
     const _data = await Promise.all(responses);
 
     for (const content of _data) {
-      results = [...results, ...content.content];
+      if (!content.error) {
+        results = [...results, ...content.content];
+      }
     }
 
     res.send({
