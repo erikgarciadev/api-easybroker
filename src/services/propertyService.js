@@ -8,6 +8,13 @@ class PropertyService {
     });
     return await response.json();
   }
+
+  async getProperty(url) {
+    const response = await fetch(url, {
+      headers: getHeaders(),
+    });
+    return await response.json();
+  }
 }
 
 export default new PropertyService();
