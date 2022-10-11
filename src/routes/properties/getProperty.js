@@ -1,6 +1,6 @@
 import { API_BASE_EASYBROKER } from "../../config/constants.js";
-import { BASE_ROUTE } from "./index.js";
 import PropertyService from "../../services/propertyService.js";
+import { BASE_ROUTE } from "./index.js";
 
 export default async function getProperty(req, res) {
   const reqUrl = req.url.substring(1);
