@@ -7,10 +7,10 @@ const propertiesRouter = Router();
 
 export const BASE_ROUTE = "properties/";
 
-propertiesRouter.get("/:property_id", getProperty);
+propertiesRouter.get("/all", getAllProperties);
 
 propertiesRouter.get("/", getProperties);
 
-propertiesRouter.get("/all", getAllProperties);
+propertiesRouter.get("/:property_id", getProperty);
 
 export default propertiesRouter;

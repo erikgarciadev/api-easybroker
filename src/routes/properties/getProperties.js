@@ -1,6 +1,7 @@
 import { BASE_ROUTE } from "./index.js";
 import { API_BASE_EASYBROKER } from "../../config/constants.js";
 import { getParseData } from "../../utils/getParseData.js";
+import PropertyService from "../../services/propertyService.js";
 
 export default async function getProperties(req, res) {
   const API_BASE = req.protocol + "://" + req.headers.host + "/";

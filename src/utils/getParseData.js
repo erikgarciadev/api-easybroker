@@ -19,7 +19,7 @@ export function getParseData(data, url, API_BASE_EASYBROKER, API_BASE) {
         ...data.pagination,
         next_page: next_page,
         ...(data.pagination.page !== 1 && {
-          prev_page: prev_page,
+          prev_page: prev_page, 
         }),
       },
     }),

@@ -1,6 +1,6 @@
 import { BASE_ROUTE } from "./index.js";
 import { API_BASE_EASYBROKER } from "../../config/constants.js";
-import propertyService from "../../services/propertyService.js";
+import PropertyService from "../../services/propertyService.js";
 
 export default async function getAllProperties(req, res) {
   let results = [];
@@ -9,7 +9,7 @@ export default async function getAllProperties(req, res) {
 
   try {
     const responses = [];
-    const data = await propertyService.getProperties(url);
+    const data = await PropertyService.getProperties(url);
     const pages = Math.ceil(data.pagination.total / data.pagination.limit);
     results = [...results, ...data.content];
     for (let i = 2; i <= pages; i++) {
